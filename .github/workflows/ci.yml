@@ -14,13 +14,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    
-    - name: Install Rust
-      uses: dtolnay/rust-toolchain@nightly
+
+    - name: Install SP1 toolchain
+      run: |
+        curl -L https://sp1.succinct.xyz | bash
+        ~/.sp1/bin/sp1up
+        echo "$HOME/.sp1/bin" >> $GITHUB_PATH
+
+    - name: Install Rust nightly
+      uses: dtolnay/rust-toolchain@master
       with:
         toolchain: nightly-2024-09-01
-        components: rust-src, rust-std
-        targets: riscv32im-succinct-zkvm-elf
+        components: rust-src
 
     - name: Build
       run: cargo build --verbose
