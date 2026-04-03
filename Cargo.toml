@@ -8,8 +8,8 @@ license = "MIT"
 publish = true
 
 [dependencies]
-sp1-zkvm = "4.0"
-blake3 = { version = "1.5", default-features = false }
+sp1-zkvm = "5.2"
+blake3 = { version = ">=1.5, <1.8", default-features = false }
 serde = { version = "1.0", features = ["derive"] }
 
 [workspace]
