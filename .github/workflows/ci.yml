@@ -18,8 +18,9 @@ jobs:
     - name: Install Rust
       uses: dtolnay/rust-toolchain@nightly
       with:
-        toolchain: nightly-2024-04-01
-        components: rust-src
+        toolchain: nightly-2024-09-01
+        components: rust-src, rust-std
+        targets: riscv32im-succinct-zkvm-elf
 
     - name: Build
       run: cargo build --verbose
